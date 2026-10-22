@@ -1,1 +1,25 @@
 Desenvolvimento Web 2
+## 💻 Destaque de Projeto: Atividade EX1web2
+
+Repositório dedicado à resolução da lista de exercícios práticos da disciplina de **Desenvolvimento Web II**, focada em fundamentos avançados e manipulação de estruturas em **JavaScript**.
+
+<p align="left">
+  <img src="https://shields.io" alt="JavaScript" />
+  <img src="https://shields.io" alt="HTML5" />
+  <img src="https://shields.io" alt="Node.js" />
+</p>
+
+### 🛠️ O que foi desenvolvido?
+
+O projeto engloba 5 desafios lógicos estruturados e testados tanto no ambiente do navegador (Console do Desenvolvedor) quanto via terminal com Node.js:
+
+1. **Avaliação de Risco de Crédito:** Função que calcula a Taxa de Endividamento (\(TE = \frac{\text{dívida}}{\text{renda}} \times 100\)) tratando entradas dinâmicas com `parseFloat()` e aplicando condicionais de classificação de risco com *Template Literals*.
+2. **Manipulação Avançada de Arrays:** Captura dinâmica de dados populando um array de tamanho indefinido, utilizando métodos nativos de alta performance:
+   - `Math.max()` e `Math.min()` com operador *Spread* (`...`) para busca de extremos.
+   - `map()` para transformações matemáticas em lote (dobro dos valores).
+   - `filter()` para filtragem condicional de elementos.
+3. **Objetos Literais & Mutabilidade:** Modelagem de uma estrutura de dados de um `carro` contendo métodos internos (`this`), mutação e injeção dinâmica de novas propriedades em tempo de execução.
+4. **Programação Orientada a Objetos (POO):** Criação e estruturação da classe `Livro` aplicando construtores para instanciar múltiplos objetos com dados isolados e execução de métodos encapsulados.
+5. **Manipulação de Strings & Algoritmos:** Análise de fluxo de caracteres para identificação de **Palíndromos** através da inversão estrutural de cadeias de texto usando `split()`, `reverse()` e `join()`.
+
+

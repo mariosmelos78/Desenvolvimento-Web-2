@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios de JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        pre {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-left: 5px solid #3498db;
+            overflow-x: auto;
+            border-radius: 4px;
+        }
+        .instruction {
+            background-color: #e8f4f8;
+            border: 1px solid #bce1ec;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Exercícios de JavaScript</h1>
+    <div class="instruction">
+        <p><strong>Instruções de Execução:</strong></p>
+        <ul>
+            <li><strong>Navegador:</strong> Abra este arquivo HTML em qualquer navegador, pressione <code>F12</code> (ou clique com o botão direito e selecione "Inspecionar") e vá até a aba <strong>Console</strong> para interagir com os prompts e ver as respostas.</li>
+            <li><strong>Node.js (VSCode):</strong> Se preferir rodar no terminal do VSCode com Node.js, certifique-se de instalar o pacote de leitura (ex: <code>npm install prompt-sync</code>) e adapte os comandos <code>prompt()</code> para a sintaxe do Node.</li>
+        </ul>
+    </div>
+
+    <h2>Questão 1: Avaliação de Risco de Crédito</h2>
+    <p>Abaixo está o código que calcula a Taxa de Endividamento (TE) e classifica o risco de crédito.</p>
+
+    <h2>Questão 2: Manipulação de Array</h2>
+    <p>Cria um array de números dinâmico, encontra o maior/menor, dobra os valores e filtra os maiores que 5.</p>
+
+    <h2>Questão 3: Criação e Manipulação de Objeto</h2>
+    <p>Cria um objeto literal <code>carro</code>, exibe suas informações originais e adiciona dinamicamente novas propriedades.</p>
+
+    <script>
+        console.log("%c--- QUESTÃO 1: AVALIAÇÃO DE RISCO DE CRÉDITO ---", "color: blue; font-weight: bold;");
+        
+        // Definição da função
+        function avaliarRiscoDeCredito(rendaMensal, dividaAtual) {
+            const renda = parseFloat(rendaMensal);
+            const divida = parseFloat(dividaAtual);
+            
+            if (isNaN(renda) || isNaN(divida) || renda <= 0) {
+                return "Valores inválidos inseridos.";
+            }
+            
+            const te = (divida / renda) * 100;
+            let classificacao = "";
+            
+            if (te < 10) {
+                classificacao = "Risco Baixo";
+            } else if (te < 30) {
+                classificacao = "Risco Moderado";
+            } else {
+                classificacao = "Risco Alto";
+            }
+            
+            return `Taxa de Endividamento: ${te.toFixed(2)}% | Classificação: ${classificacao}`;
+        }
+
+        // Execução com prompt do navegador (simulando a entrada do usuário)
+        const entradaRenda = prompt("Questão 1 - Digite a sua renda mensal:");
+        const entradaDivida = prompt("Questão 1 - Digite a sua dívida atual:");
+        const resultadoCredito = avaliarRiscoDeCredito(entradaRenda, entradaDivida);
+        console.log(`Resultado da Avaliação: ${resultadoCredito}`);
+
+
+        console.log("\n%c--- QUESTÃO 2: MANIPULAÇÃO DE ARRAY ---", "color: blue; font-weight: bold;");
+        
+        const numeros = [];
+        let continuar = true;
+        
+        while (continuar) {
+            let entradaNum = prompt("Questão 2 - Digite um número para o array (ou clique em 'Cancelar'/'deixe vazio' para encerrar):");
+            if (entradaNum === null || entradaNum.trim() === "") {
+                continuar = false;
+            } else {
+                let num = parseFloat(entradaNum);
+                if (!isNaN(num)) {
+                    numeros.push(num);
+                }
+            }
+        }
+
+        console.log("Array original:", numeros);
+
+        if (numeros.length > 0) {
+            // a) Maior e menor valor
+            const maior = Math.max(...numeros);
+            const menor = Math.min(...numeros);
+            console.log(`a) Maior valor: ${maior} | Menor valor: ${menor}`);
+
+            // b) Array com o dobro usando map()
+            const dobro = numeros.map(num => num * 2);
+            console.log("b) Novo array (dobro):", dobro);
+
+            // c) Filtrar maiores que 5 usando filter()
+            const maioresQueCinco = numeros.filter(num => num > 5);
+            console.log("c) Números maiores que 5:", maioresQueCinco);
+        } else {
+            console.log("Nenhum número válido foi inserido no array.");
+        }
+
+
+        console.log("\n%c--- QUESTÃO 3: CRIAÇÃO E MANIPULAÇÃO DE OBJETO ---", "color: blue; font-weight: bold;");
+        
+        // Criação do objeto literal carro
+        const carro = {
+            marca: "Toyota",
+            modelo: "Corolla",
+            ano: 2022,
+            exibirInfo: function() {
+                console.log(`Marca: ${this.marca} | Modelo: ${this.modelo} | Ano: ${this.ano}`);
+            }
+        };
+
+        // a) Chamando o método exibirInfo()
+        console.log("a) Informações originais do carro:");
+        carro.exibirInfo();
+
+        // b) Adicionando dinamicamente uma nova propriedade (ex: cor ou portas)
+        carro.cor = "Prata";
+        console.log("b) Objeto atualizado com nova propriedade (cor):", carro);
+        console.log(`Cor do carro: ${carro.cor}`);
+    </script>
+</body>
+</html>

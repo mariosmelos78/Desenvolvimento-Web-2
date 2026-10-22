@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 01 -JavaScript</title>
+</head>
+<body>
+    <h1>Exercícios JavaScript - Verifique o Console (F12)</h1>
+
+    <script>
+        // ==========================================
+        // QUESTÃO 1: Avaliação de Risco de Crédito
+        // ==========================================
+        console.log("--- QUESTÃO 1: RISCO DE CRÉDITO ---");
+
+        function avaliarRiscoDeCredito(rendaMensal, dividaAtual) {
+            // Converte strings para números flutuantes
+            const renda = parseFloat(rendaMensal);
+            const divida = parseFloat(dividaAtual);
+
+            // Validação simples para evitar divisão por zero ou dados inválidos
+            if (isNaN(renda) || isNaN(divida) || renda <= 0) {
+                return "Dados inválidos para o cálculo.";
+            }
+
+            // Cálculo da Taxa de Endividamento (TE)
+            const TE = (divida / renda) * 100;
+
+            // Classificação do risco
+            if (TE < 10) {
+                return "Risco Baixo";
+            } else if (TE >= 10 && TE < 30) {
+                return "Risco Moderado";
+            } else {
+                return "Risco Alto";
+            }
+        }
+
+        // Solicita os dados ao usuário através do navegador
+        const rendaUsuario = prompt("Questão 1: Digite sua renda mensal:");
+        const dividaUsuario = prompt("Questão 1: Digite sua dívida atual:");
+
+        // Executa a função e armazena o resultado
+        const resultadoRisco = avaliarRiscoDeCredito(rendaUsuario, dividaUsuario);
+
+        // Exibe o resultado usando Template Literals
+        console.log(`Renda Informada: R$ ${rendaUsuario} | Dívida Informada: R$ ${dividaUsuario}`);
+        console.log(`Resultado da Avaliação: ${resultadoRisco}`);
+        console.log("\n");
+
+
+        // ==========================================
+        // QUESTÃO 2: Manipulação de Array
+        // ==========================================
+        console.log("--- QUESTÃO 2: MANIPULAÇÃO DE ARRAY ---");
+
+        const numeros = [];
+        let continuar = true;
+
+        // Loop para receber quantos números o usuário quiser
+        while (continuar) {
+            let entrada = prompt("Questão 2: Digite um número (ou clique em 'Cancelar' para parar):");
+            
+            if (entrada === null || entrada.trim() === "") {
+                continuar = false;
+            } else {
+                let numeroConvertido = parseFloat(entrada);
+                if (!isNaN(numeroConvertido)) {
+                    numeros.push(numeroConvertido);
+                }
+            }
+        }
+
+        if (numeros.length > 0) {
+            console.log("Array original:", numeros);
+
+            // a) Maior e menor valor
+            const maior = Math.max(...numeros);
+            const menor = Math.min(...numeros);
+            console.log(`Maior valor: ${maior} | Menor valor: ${menor}`);
+
+            // b) Novo array com o dobro (map)
+            const dobro = numeros.map(num => num * 2);
+            console.log("Array com o dobro de cada valor:", dobro);
+
+            // c) Filtrar números maiores que 5 (filter)
+            const maioresQueCinco = numeros.filter(num => num > 5);
+            console.log("Apenas números maiores que 5:", maioresQueCinco);
+        } else {
+            console.log("Nenhum número foi inserido.");
+        }
+        console.log("\n");
+
+
+        // ==========================================
+        // QUESTÃO 3: Criação e Manipulação de Objeto
+        // ==========================================
+        console.log("--- QUESTÃO 3: OBJETO LITERAL ---");
+
+        // Criação do objeto literal
+        const carro = {
+            marca: "Toyota",
+            modelo: "Corolla",
+            ano: 2023,
+            exibirInfo: function() {
+                console.log(`Marca: ${this.marca} | Modelo: ${this.modelo} | Ano: ${this.ano}`);
+            }
+        };
+
+        // a) Chamando o método exibirInfo()
+        carro.exibirInfo();
+
+        // b) Adicionando dinamicamente uma nova propriedade (ex: cor)
+        carro.cor = "Prata";
+        console.log("Nova propriedade adicionada dinamicamente (cor):", carro.cor);
+        console.log("Objeto carro atualizado:", carro);
+
+    </script>
+</body>
+</html>
